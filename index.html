@@ -1,182 +1,278 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAT Cargo VAD LLC</title>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            color: #333;
-        }
-        nav {
-            background: #000;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 20px;
-            background: #111;
-            color: #fff;
-            min-height: 100vh;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .hero-text {
-            max-width: 500px;
-            padding: 20px;
-            animation: slideInLeft 1.5s ease;
-        }
-        .hero-text h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        .hero-text p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .hero-img img {
-            max-width: 400px;
-            width: 100%;
-            border-radius: 10px;
-            animation: slideInRight 1.5s ease;
-        }
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease;
-        }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        .section p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-        }
-        .contact {
-            background: #e9e9e9;
-            padding: 60px 20px;
-        }
-        footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark">
+  <title>A4 INVESTIGATIONS, LLC — Private Investigations & Digital Forensics</title>
+  <meta name="description" content="Surveillance, background checks, digital forensics, and fraud investigations. Oceanside, CA. Email support@cymet.shop • 707 916 9673.">
+  <link rel="canonical" href="https://www.example.com/" />
+  <meta property="og:title" content="A4 INVESTIGATIONS, LLC — Private Investigations & Digital Forensics">
+  <meta property="og:description" content="Discreet • Compliant • Results. Oceanside & greater San Diego.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://envisiontechpvt.com/wp-content/uploads/2024/08/digitalForensics2.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%238b5cf6'/><stop offset='1' stop-color='%23a3e635'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='%230a0b14'/><path d='M18 70 L36 30 L64 30 L82 70 L72 70 L64 52 L36 52 L28 70 Z' fill='url(%23g)'/><circle cx='50' cy='50' r='6' fill='%2322d3ee'/></svg>">
+  <style>
+    :root{
+      --bg:#0a0b14;           /* night */
+      --ink:#e5e7eb;          /* text */
+      --muted:#9ca3af;        /* muted */
+      --panel:#101327;        /* cards */
+      --violet:#8b5cf6;       /* accents */
+      --lime:#a3e635;
+      --cyber:#22d3ee;
+      --grid:#11162a;         /* gridlines */
+      --border:#1f2a44;       /* borders */
+      --ring:rgba(139,92,246,.28);
+      --shadow:0 14px 36px rgba(0,0,0,.45);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:24px}
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideInLeft {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideInRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    </style>
+    /* NAV — slim, neon accents */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(10,11,20,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:900;letter-spacing:.4px;display:flex;align-items:center;gap:10px}
+    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(120deg,var(--violet),var(--lime));box-shadow:0 0 14px var(--violet)}
+    .menu{display:flex;gap:10px}
+    .chip{padding:9px 12px;border-radius:999px;border:1px solid var(--border);background:linear-gradient(180deg,#0e1122,#0b0d1c);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+    .chip:hover{border-color:#2a3862}
+
+    /* HERO — left layout with animated scan + grid */
+    .hero{position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;inset:0;background:
+      repeating-linear-gradient(0deg, transparent 0 38px, rgba(255,255,255,.03) 38px 39px),
+      repeating-linear-gradient(90deg, transparent 0 38px, rgba(255,255,255,.03) 38px 39px);
+      opacity:.35}
+    .hero:after{content:"";position:absolute;inset:-40% 0 0 0;background:linear-gradient(180deg,rgba(34,211,238,.18),transparent 50%);transform:translateY(-20%);animation:scan 8s linear infinite}
+    @keyframes scan{to{transform:translateY(20%)}}
+    .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;min-height:72vh}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.35);color:#c3f7ff;font-weight:800}
+    .hero h1{font-size:clamp(38px,6vw,66px);margin:12px 0;font-weight:900;letter-spacing:.2px}
+    .subtitle{color:var(--muted);max-width:60ch}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800}
+    .btn-primary{background:linear-gradient(120deg,var(--violet),var(--lime));color:#0a0b14;box-shadow:0 16px 36px var(--ring)}
+    .btn-ghost{border:1px solid var(--border);background:linear-gradient(180deg,#0e1122,#0b0d1c)}
+    .media{border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .media img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/3}
+
+    /* Section base */
+    section{padding:68px 0}
+    .section-title{font-size:28px;font-weight:900;margin:0 0 8px;background:linear-gradient(120deg,var(--violet),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .muted{color:var(--muted)}
+
+    /* Services */
+    .features{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    .feature{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+    .ping{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--cyber);box-shadow:0 0 18px var(--cyber);margin-right:8px}
+
+    /* Case types */
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{padding:6px 10px;border-radius:999px;border:1px dashed #2a3862;color:#cbd5e1}
+
+    /* Gallery */
+    .gallery{display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
+    .shot{overflow:hidden;border-radius:14px;background:#0b0f1e;border:1px solid var(--border)}
+    .shot img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;display:block;transform:scale(1.02);transition:transform .45s ease}
+    .shot:hover img{transform:scale(1.06)}
+
+    /* Contact */
+    .contact-grid{display:grid;gap:18px;grid-template-columns:1.1fr .9fr}
+    .list{list-style:none;margin:0;padding:0}
+    .list li{padding:8px 0;border-bottom:1px dashed var(--border)}
+    input,textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);outline:none;background:#0e1326;color:#fff}
+    input:focus,textarea:focus,select:focus{border-color:#5b6aa8;box-shadow:0 0 0 4px rgba(139,92,246,.18)}
+    textarea{min-height:120px;resize:vertical}
+    .btn-send{margin-top:10px;padding:12px 16px;border-radius:12px;font-weight:800;background:linear-gradient(120deg,var(--violet),var(--lime));color:#0a0b14;border:0;box-shadow:var(--shadow);cursor:pointer}
+    iframe{width:100%;height:360px;border:0;border-radius:14px}
+
+    .notice{padding:10px 12px;border:1px dashed #2a3862;border-radius:12px;background:rgba(139,92,246,.06);color:#cbd5e1}
+
+    footer{padding:28px 0;text-align:center;color:#94a3b8;border-top:1px solid var(--border)}
+
+    @media (max-width:1080px){
+      .hero-inner{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">PAT Cargo VAD LLC</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+<!-- NAV -->
+<div class="nav" role="navigation" aria-label="Primary">
+  <div class="container nav-wrap">
+    <div class="brand"><span class="dot"></span> A4 INVESTIGATIONS, LLC</div>
+    <nav class="menu" aria-label="Sections">
+      <a class="chip" href="#services">Services</a>
+      <a class="chip" href="#cases">Case Types</a>
+      <a class="chip" href="#gallery">Gallery</a>
+      <a class="chip" href="#contact">Consultation</a>
     </nav>
+  </div>
+</div>
 
-    <div class="hero" id="home">
-        <div class="hero-text">
-            <h1>PAT Cargo VAD LLC</h1>
-            <p>Your trusted partner in transportation and warehousing. We provide reliable cargo services and storage solutions to meet your business needs with efficiency and care.</p>
-        </div>
-        <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=934&q=80" alt="Cargo Services">
-        </div>
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="container hero-inner">
+    <div class="copy">
+      <span class="eyebrow">Discreet • Compliant • Results</span>
+      <h1>Private investigations & digital forensics — Oceanside, CA.</h1>
+      <p class="subtitle">We help attorneys, businesses, and families verify facts: surveillance, background checks, fraud & insurance claims, OSINT, and device imaging.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Request a Consultation</a>
+        <a class="btn btn-ghost" href="mailto:support@cymet.shop">support@cymet.shop</a>
+        <a class="btn btn-ghost" href="tel:7079169673">707 916 9673</a>
+      </div>
+    </div>
+    <div class="media">
+      <img loading="lazy" src="https://envisiontechpvt.com/wp-content/uploads/2024/08/digitalForensics2.webp" alt="Digital forensics workstation" />
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">What we do</h2>
+    <p class="muted">Licensed, ethical methods • Evidence‑ready deliverables.</p>
+    <div class="features">
+      <div class="feature"><span class="ping"></span><strong>Surveillance</strong><br>Static/mobile visuals, time‑stamped photo & video, activity logs.</div>
+      <div class="feature"><span class="ping"></span><strong>Background & skip tracing</strong><br>Comprehensive checks, address history, assets & associates.</div>
+      <div class="feature"><span class="ping"></span><strong>Digital forensics</strong><br>Device imaging, email & chat preservation, metadata review.</div>
+      <div class="feature"><span class="ping"></span><strong>Fraud & insurance</strong><br>Claim verification, AOE/COE, subrosa, witness statements.</div>
+      <div class="feature"><span class="ping"></span><strong>OSINT & due diligence</strong><br>Online footprint mapping, corporate & litigation intel.</div>
+      <div class="feature"><span class="ping"></span><strong>Process service coordination</strong><br>Attempt logs and proof of service where applicable.</div>
+    </div>
+    <p class="notice" style="margin-top:12px">We operate within all applicable laws and do not offer illegal services. We respect privacy and lawful authority requirements.</p>
+  </div>
+</section>
+
+<!-- CASE TYPES -->
+<section id="cases">
+  <div class="container">
+    <h2 class="section-title">Case types</h2>
+    <p class="muted">Typical engagements we handle.</p>
+    <div class="tags" style="margin-top:10px">
+      <span class="tag">Corporate due diligence</span>
+      <span class="tag">Insurance defense</span>
+      <span class="tag">Family & custody</span>
+      <span class="tag">Missing persons / locate</span>
+      <span class="tag">Employee misconduct</span>
+      <span class="tag">Asset verification</span>
+      <span class="tag">Digital evidence review</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <h2 class="section-title">Gallery</h2>
+    <p class="muted">Tools, scenes, and visuals from the investigative world.</p>
+    <div class="gallery" style="margin-top:12px">
+      <figure class="shot"><img loading="lazy" src="https://avatars.mds.yandex.net/i?id=c46e510d721fc437eda54ba0f00a0be55bf90ab5-10237804-images-thumbs&n=13" alt="Investigator in city night"></figure>
+      <figure class="shot"><img loading="lazy" src="https://avatars.mds.yandex.net/i?id=86cf630131072c72bd64ed76d38f5e309e7dd872-6450036-images-thumbs&n=13" alt="Magnifying glass over documents"></figure>
+      <figure class="shot"><img loading="lazy" src="https://t4.ftcdn.net/jpg/01/00/14/47/360_F_100144785_r55JQk2rvLnI7dj9ZK0STVzIxWW8FnPx.jpg" alt="Fingerprint closeup"></figure>
+      <figure class="shot"><img loading="lazy" src="https://avatars.mds.yandex.net/get-altay/9830591/2a0000018fb59df46baab82d98e95319d1f7/XXL_height" alt="Urban skyline surveillance"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Request a consultation</h2>
+    <div class="contact-grid" style="margin-top:10px">
+      <div class="feature">
+        <ul class="list">
+          <li><strong>Company:</strong> A4 INVESTIGATIONS, LLC</li>
+          <li><strong>Email:</strong> <a href="mailto:support@cymet.shop">support@cymet.shop</a></li>
+          <li><strong>Phone:</strong> <a href="tel:7079169673">707 916 9673</a></li>
+          <li><strong>Address:</strong> 3408 Hacienda Dr, Oceanside, CA 92054‑3833, USA</li>
+          <li><strong>Service area:</strong> Oceanside · San Diego County · Southern California</li>
+        </ul>
+        <p class="notice">Please share only information you are comfortable sending by email. We will schedule a secure intake call if needed.</p>
+      </div>
+      <div class="feature">
+        <form id="intake" onsubmit="event.preventDefault();
+          const get=(id)=>encodeURIComponent(document.getElementById(id).value||'');
+          const body=`Name: ${get('name')}\nPhone: ${get('phone')}\nOrganization: ${get('org')}\nCase type: ${get('type')}\nJurisdiction: ${get('juris')}\nTimeline: ${get('time')}\nSummary: ${get('msg')}`;
+          window.location.href='mailto:support@cymet.shop?subject=A4%20Investigations%20—%20Consultation&body='+body;">
+          <input id="name" type="text" placeholder="Your Name" required />
+          <input id="phone" type="tel" placeholder="Phone" />
+          <input id="org" type="text" placeholder="Organization (optional)" />
+          <select id="type" aria-label="Case type">
+            <option>Surveillance</option>
+            <option>Background / Skip trace</option>
+            <option>Digital forensics</option>
+            <option>Fraud / Insurance</option>
+            <option>Due diligence</option>
+            <option>Other</option>
+          </select>
+          <input id="juris" type="text" placeholder="City / State" />
+          <input id="time" type="text" placeholder="Timeline (e.g., ASAP, by next week)" />
+          <textarea id="msg" placeholder="Brief summary (targets, addresses, constraints, safety concerns)"></textarea>
+          <button type="submit" class="btn-send">Send Secure Intake</button>
+        </form>
+      </div>
     </div>
 
-    <div class="section" id="about">
-        <h2>About Us</h2>
-        <p>PAT Cargo VAD LLC is a Domestic LLC based in Arizona, offering specialized services in transportation and warehousing. With a focus on reliability and customer satisfaction, we have been serving businesses since 2021.</p>
-        <p><strong>Registered Address:</strong><br>
-        2902 W Sweetwater Ave, Apt 2190, Phoenix, AZ 85029, United States</p>
+    <div class="container" style="padding-top:14px">
+      <iframe
+        src="https://www.google.com/maps?q=3408+Hacienda+Dr,+Oceanside,+CA+92054&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map — A4 INVESTIGATIONS, LLC">
+      </iframe>
     </div>
+  </div>
+</section>
 
-    <div class="section contact" id="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Email:</strong> <a href="mailto:contact@patcargovadllc.click">contact@patcargovadllc.click</a></p>
-        <p><strong>Agent Address:</strong><br>
-        2902 W Sweetwater Ave, Apt 2190, Phoenix, AZ 85029, United States</p>
-    </div>
+<footer>
+  <div class="container">© <span id="year"></span> A4 INVESTIGATIONS, LLC — All rights reserved.</div>
+</footer>
 
-    <footer>
-        &copy; 2025 PAT Cargo VAD LLC. All rights reserved.
-    </footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Accessible skip link
+  (function(){
+    const skip=document.createElement('a');
+    skip.href='#contact'; skip.textContent='Skip to consultation';
+    skip.style.cssText='position:absolute;left:-9999px;top:0;background:#fff;color:#000;padding:8px;border-radius:8px;z-index:9999';
+    skip.onfocus=()=>{skip.style.left='8px'}; skip.onblur=()=>{skip.style.left='-9999px'}; document.body.prepend(skip);
+  })();
+</script>
 
-    <script>
-        // Intersection Observer for fade-in effect
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
-
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "A4 INVESTIGATIONS, LLC",
+  "image": [
+    "https://envisiontechpvt.com/wp-content/uploads/2024/08/digitalForensics2.webp"
+  ],
+  "email": "support@cymet.shop",
+  "telephone": "7079169673",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3408 Hacienda Dr",
+    "addressLocality": "Oceanside",
+    "addressRegion": "CA",
+    "postalCode": "92054-3833",
+    "addressCountry": "US"
+  },
+  "areaServed": "San Diego County",
+  "url": "https://www.example.com/",
+  "description": "Private investigations, surveillance, background checks, digital forensics, and due diligence."
+}
+</script>
 </body>
 </html>
